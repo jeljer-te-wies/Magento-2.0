@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="reload" translate="label" sortOrder="1000">
+            <label>Reload</label>
+        </tab>
+        <section id="seo" translate="label" sortOrder="100" showInDefault="1" showInWebsite="0" showInStore="0">
+            <class>separator-top</class>
+            <label>SEO</label>
+            <tab>reload</tab>
+            <resource>Reload_Seo::system_configuration</resource>
+            <group id="reload_seo_group" translate="label" type="text" sortOrder="1000" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General</label>
+                <field id="reload_seo_key" translate="label comment" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>API Key:</label>
+                    <comment>Enter your API Key</comment>
+                    <validate>validate-alphanum</validate>
+                </field>
+                <field id="reload_seo_title_default" translate="label comment" type="select" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Names as default keywords:</label>
+                    <comment>Do you want to use the product and category names as default keywords?</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="reload_seo_analyze_images" type="select" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Analyze images:</label>
+                    <comment>Do you want us to analyze images file names and alt tags?</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="reload_seo_mappings" translate="label comment" type="text" sortOrder="2000" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Field mapping</label>
+                <field id="reload_seo_mapping_name" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>name</label>
+                    <source_model>Reload\Seo\Model\Adminhtml\System\Config\Source\Attribute</source_model>
+                </field>
+                <field id="reload_seo_mapping_short_description" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>short_description</label>
+                    <source_model>Reload\Seo\Model\Adminhtml\System\Config\Source\Attribute</source_model>
+                </field>
+                <field id="reload_seo_mapping_description" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>description</label>
+                    <source_model>Reload\Seo\Model\Adminhtml\System\Config\Source\Attribute</source_model>
+                </field>
+                <field id="reload_seo_mapping_meta_title" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>meta_title</label>
+                    <source_model>Reload\Seo\Model\Adminhtml\System\Config\Source\Attribute</source_model>
+                </field>
+                <field id="reload_seo_mapping_meta_keyword" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>meta_keyword</label>
+                    <source_model>Reload\Seo\Model\Adminhtml\System\Config\Source\Attribute</source_model>
+                </field>
+                <field id="reload_seo_mapping_meta_description" translate="label" type="select" sortOrder="6" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>meta_description</label>
+                    <source_model>Reload\Seo\Model\Adminhtml\System\Config\Source\Attribute</source_model>
+                </field>
+                <field id="reload_seo_mapping_url_key" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>url_key</label>
+                    <source_model>Reload\Seo\Model\Adminhtml\System\Config\Source\Attribute</source_model>
+                </field>
+                <field id="reload_seo_mapping_status" translate="label" type="select" sortOrder="8" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>status</label>
+                    <source_model>Reload\Seo\Model\Adminhtml\System\Config\Source\Attribute</source_model>
+                </field>
+                <field id="reload_seo_mapping_custom" translate="label" type="multiselect" sortOrder="9" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>custom</label>
+                    <can_be_empty>1</can_be_empty>
+                    <source_model>Reload\Seo\Model\Adminhtml\System\Config\Source\AttributeWithoutEmpty</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <script src="Reload_Seo::js/reload/jquery.min.js"/>
+        <script src="Reload_Seo::js/reload/select2/select2.js"/>
+        <css src="Reload_Seo::js/reload/select2/select2.css"/>
+        <script src="Reload_Seo::js/reload/seo.js"/>
+        <script src="Reload_Seo::js/reload/snippet.js"/>
+        <css src="Reload_Seo::css/reload/seo.css"/>
+    </head>
+    <body>
+        <referenceContainer name="header">
+            <block class="\Reload\Seo\Block\Adminhtml\SeoProcessUpdates" name="seo-process-updates"/>
+        </referenceContainer>
+    </body>
+</page>

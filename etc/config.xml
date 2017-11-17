@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <!-- Default configuration -->
+        <reload>
+            <reload_seo_mappings>
+                <reload_seo_mapping_name>name</reload_seo_mapping_name>
+                <reload_seo_mapping_short_description>short_description</reload_seo_mapping_short_description>
+                <reload_seo_mapping_description>description</reload_seo_mapping_description>
+                <reload_seo_mapping_meta_title>meta_title</reload_seo_mapping_meta_title>
+                <reload_seo_mapping_meta_keyword>meta_keyword</reload_seo_mapping_meta_keyword>
+                <reload_seo_mapping_meta_description>meta_description</reload_seo_mapping_meta_description>
+                <reload_seo_mapping_url_key>url_key</reload_seo_mapping_url_key>
+                <reload_seo_mapping_status>status</reload_seo_mapping_status>
+            </reload_seo_mappings>
+        </reload>
+    </default>
+</config>

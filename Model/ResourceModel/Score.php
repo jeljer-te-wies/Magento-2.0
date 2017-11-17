@@ -1,0 +1,12 @@
+<?php
+namespace Reload\Seo\Model\ResourceModel;
+
+use \Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+
+class Score extends AbstractDb
+{
+    protected function _construct()
+    {
+        $this->_init('reload_seo_score', 'id');
+    }
+}

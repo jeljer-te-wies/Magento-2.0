@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <listingToolbar name="listing_top">
+        <massaction name="listing_massaction">
+            <action name="mass_update_seo" >
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">update_seo</item>
+                        <item name="label" xsi:type="string" translate="true">Update SEO statusses</item>
+                        <item name="url" xsi:type="url" path="reload_seo/seo/updateproducts">
+                            <param name="_current">true</param>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+    </listingToolbar>
+    <columns name="product_columns" class="Magento\Catalog\Ui\Component\Listing\Columns">
+        <column name="seo_score" class="Reload\Seo\Ui\Component\Listing\Columns\SeoScore">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                    <item name="label" xsi:type="string" translate="true">Seo Score</item>
+                    <item name="sortOrder" xsi:type="number">75</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="filterable" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </column>
+    </columns>
+</listing>

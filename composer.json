@@ -1,0 +1,25 @@
+{
+    "name": "reload/seo",
+    "description": "ReloadSEO Module",
+    "type": "magento2-module",
+    "version": "1.3.7",
+    "require": {
+        "php": "~7.0.6",
+        "magento/magento-composer-installer": "*"
+    },
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": { "Reload\\Seo\\": "" },
+        "files": [ "registration.php" ]
+    },
+    "extra": {
+        "map": [
+            [
+                "*",
+                "Reload/Seo"
+            ]
+        ]
+    },
+    "minimum-stability": "alpha"
+}
+

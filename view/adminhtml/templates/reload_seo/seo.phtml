@@ -1,0 +1,124 @@
+<?php
+/**
+ * @category   Reload
+ * @package    Reload_Seo
+ * @copyright  Copyright (c) 2013-2015 AndCode (http://www.andcode.nl)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+use \Magento\Framework\Phrase;
+?>
+
+<?php 
+if($this->getScore() != null) { 
+//Only show the html and javascript if the score object is not null.
+?>
+<div id="reload-snippet" style="display: none;">
+	<div class="entry-edit">
+		<div class="entry-edit-head">
+		    <h4 class="icon-head head-edit-form fieldset-legend">Rich snippet preview</h4>
+		    <div class="form-buttons"><button type="button" class="scalable toggle-snippet"><span><span><span class="button-text">Hide snippet</span></span></span></button></div>
+		</div>
+		<div class="snippet-container">
+			<div class="snippet">
+				<div class="title-snippet"></div>
+				<div class="url-snippet">preview.reloadseo.com/<div class="action-menu"><span class="url-chevron"></span></div></div>
+				<div class="description-snippet"></div>
+			</div>
+			<div class="snippet-summary">
+				<table cellpadding="0" cellspacing="0">
+					<thead>
+						<tr>
+							<th></th>
+							<th colspan="3"><?php echo new Phrase('Chars'); ?></th>
+							<th colspan="3"><?php echo new Phrase('Pixels'); ?></th>
+						</tr>
+						<tr>
+							<th><?php echo new Phrase('Element'); ?></th>
+							<th><?php echo new Phrase('Length'); ?></th>
+							<th><?php echo new Phrase('Displayed'); ?></th>
+							<th><?php echo new Phrase('Truncated'); ?></th>
+							<th><?php echo new Phrase('Length'); ?></th>
+							<th><?php echo new Phrase('Available'); ?></th>
+							<th><?php echo new Phrase('Remaining'); ?></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="title-row">
+							<td><?php echo new Phrase('Title'); ?></td>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+						</tr>
+						<tr class="description-row">
+							<td><?php echo new Phrase('Description'); ?></td>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="reload-seo-scores" class="reload-seo-scores <?php echo $this->getUpdateRequestKey(); ?>">
+	<div class="seo-results">
+        <div class="seo-rules">
+            <table cellpadding="0" cellspacing="0">
+                <tbody>
+                <?php foreach($this->getScore()->getRulesCollection() as $rule) { ?>
+                    <tr class="seo-rule">
+                        <td class="indicator"><div class="indicator-dot" style="background-color: <?php echo $rule->getStatus(); ?>;"></div></td>
+                        <td><?php echo $rule->getTitle(); ?></td>
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
+        </div>
+        <div class="base-score seo-box">
+			<p><?php echo new Phrase('Based on our information we have calculated the following SEO-score:'); ?></p>
+			<span class="seo-score" style="background-color: <?php echo $this->getScore()->getColor(); ?>;"><?php echo $this->getScore()->getScore(); ?></span>
+			<button type="button" class="seo-toggle-button">Hide</button>
+		</div>
+	</div>
+</div>
+<?php $fieldMapping = $this->_dataHelper->getFieldMappings($this->getScore()->getType()); ?>
+<?php $fieldMappingCustom = $this->_dataHelper->getFieldMappingsCustom($this->getScore()->getType()); ?>
+<?php $ajaxUrl = $this->_dataHelper->buildUrl('show', array(
+    'key' => $this->getApiKey(),
+    'language' => $this->_resolver->getLocale(),
+    'type' => $this->getScore()->getType(),
+    'framework' => 'magento',
+    'website' => $this->getStoreManager()->getStore()->getBaseUrl()
+)); ?>
+<script type="text/javascript">
+//Declare all required variables for using in the seo.js file.
+    reloadseo.url = '<?php echo $ajaxUrl; ?>';
+    reloadseo.referenceId = '<?php echo $this->getScore()->getReferenceId(); ?>';
+    reloadseo.baseUrl = '<?php echo $this->getBaseShopUrl(); ?>';
+    reloadseo.type = '<?php echo $this->getScore()->getType(); ?>';
+    reloadseo.storeId = '<?php echo $this->getStoreId(); ?>';
+    reloadseo.titlePrefix = '<?php echo $this->getScopeConfig()->getValue('design/head/title_prefix'); ?>';
+    reloadseo.titleSuffix = '<?php echo $this->getScopeConfig()->getValue('design/head/title_suffix'); ?>';
+    reloadseo.analyze_images = parseInt('<?php echo $this->getScopeConfig()->getValue('reload/reload_seo_group/reload_seo_analyze_images'); ?>');
+    reloadseo.stores = <?php echo json_encode($this->_dataHelper->collectStores()); ?>;
+    reloadseo.meta_description = '<?php echo $this->getMetaDescription(); ?>';
+    reloadseo.meta_title = '<?php echo $this->getMetaTitle(); ?>';
+
+    reloadseo.vars.type = '<?php echo $this->getScore()->getType(); ?>';
+    reloadseo.vars.field_mapping = <?php echo json_encode($fieldMapping); ?>;
+    reloadseo.vars.field_mapping_custom = <?php echo json_encode($fieldMappingCustom); ?>;
+    reloadseo.vars.invisble_value = <?php echo \Magento\Catalog\Model\Product\Visibility::VISIBILITY_NOT_VISIBLE; ?>;
+
+    //Init the system.
+    reloadseo.init();
+
+</script>
+<?php } ?>

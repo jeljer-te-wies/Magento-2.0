@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <dataSource name="product_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Reload_Seo/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="product-details">
+        <field name="reload_seo_keywords">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">SEO keyword</item>
+                    <item name="additionalClasses" xsi:type="string">input-text reload-seo-keywords-field</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="component" xsi:type="string">Reload_Seo/js/form/select2</item>
+                    <item name="sortOrder" xsi:type="number">1</item>
+                </item>
+            </argument>
+        </field>
+        <field name="reload_seo_synonyms">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">SEO synonyms</item>
+                    <item name="additionalClasses" xsi:type="string">input-text reload-seo-synonyms-field</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="component" xsi:type="string">Reload_Seo/js/form/select2</item>
+                    <item name="sortOrder" xsi:type="number">2</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>
